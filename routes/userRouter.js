@@ -1,20 +1,12 @@
-//routes > userRouter.js
+const express        = require("express");
+const userController = require("../controller/userController");
+const db             = require("../config/mysql");
+const jwt            = require("../utils/jwt");
+const router         = express.Router();
 
-const router = require("express").Router();
-const db     = require("../config/mysql");
+router.post("/signup", userController.signUp);
+router.post("/login", userController.logIn);
 
-router.get("/", async(req, res, next) => {
-    try {
-        const sql = 
-        // `
-        // insert into users (user_id, name, age) values (${req.body.user_id}, '${req.body.name}', ${req.body.age});
-        // `
-        'select * from users'
-        const [rows, fields] = await db.query(sql)
-        return res.status(200).json({message:"success", result:rows});
-    } catch(e) {
-        console.log(e.message);
-    }
-});
-
-module.exports = router;
+module.exports={
+    router
+}
