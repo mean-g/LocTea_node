@@ -8,5 +8,4 @@ const getProductsCovers = async (limis, offset) => {
         err.statusCode = 404;
         throw err;
     }
-    const 
 }
